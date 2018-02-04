@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>논준모연구소 온라인컨설팅</title>
+    <style>
+      body {margin:0;}
+      div.top {
+        margin:0;
+        padding-top:1px;
+        padding-bottom:6px;
+        background-color: black;
+      }
+      span.logo img {
+        margin-left:20px;
+        margin-right:7px;
+        margin-top:3px;
+        padding-top:3px;
+        height:45px;
+        width:auto;
+        float:left;
+      }
+      ul.top_left {
+        list-style:none;
+        margin-top:10px;
+        padding-left:1px;
+        padding-bottom:10px;
+        margin-right:60px;
+        float:left;
+      }
+      ul.top_left li#online {
+        font-size:15px;
+        color:yellow;
+      }
+      ul.top_left li#consulting {
+        font-size:13px;
+        color:white;
+      }
+      #nav {
+        list-style-type:none;
+        font-seze:16;
+      }
+      #nav li {
+        position:relative; float:left;
+        text-align:center;
+        padding-right:40px;
+      }
+      #nav li a {display:block;
+        color:silver;
+        text-decoration:none;
+      }
+      #nav li a span.subtitle {font-size:12px; color:orange;}
+      #nav li ul.subnav {
+        position:absolute; top:20px; clear:both;
+        width:80px;
+        padding-left:15px;
+        border-right:1px solid #333;
+        border-bottom:1px solid #333;
+        border-left:1px solid #333;
+        border-bottom-right-radius:8px;
+        border-bottom-left-radius:8px;
+        background:lightgray;
+        list-style-type:none;
+      }
+      .off-screen {left:-10000px;}
+      #nav li ul.subnav li {
+        clear:both; height:40px; margin:0px; padding:0; text-align:center;
+      }
+      #nav li ul.subnav li a {
+        padding:10px 0;
+        color:#333; font-size:14px; text-decoration:none;
+      }
+      #nav li ul.subnav li a:hover {color:#fff; font-size:14px;}
+      #nav2 {
+        padding:0;
+        margin-right:30px;
+        text-align:right;
+        list-style-type:none;}
+      #nav2 li {display:inline; padding-right:5px;}
+      #nav2 li span.nav2-box {
+        border-top-right-radius:2px;
+        border-top-left-radius:2px;
+        border-bottom-right-radius:2px;
+        border-bottom-left-radius:2px;
+        background:darkSlategray;
+      }
+      #nav2 li span.nav2-box a {
+        font-size:13px;
+        color:darkgray;
+        text-decoration:none;
+      }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.subnav').addClass('off-screen');
+        $('#nav li:has(.subnav)').hover(
+          function(){
+            var subnav=$(this).children('.subnav')
+            if(!subnav.hasClass('slidingDown')){
+              subnav
+                .removeClass('off-screen')
+                .hide()
+                .addClass('slidingDown')
+                .slideDown('slow', function(){
+                  subnav.removeClass('slidingDown');
+                });
+            }
+          },
+          function(){
+            var subnav=$(this).children('.subnav')
+            if(!subnav.hasClass('slidingUp')){
+              subnav
+                .addClass('slidingUp')
+                .slideUp('fast', function(){
+                  subnav
+                    .removeClass('slidingUp')
+                    .show()
+                    .addClass('off-screen');
+                });
+            }
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div class="top">
+      <span class="logo"><img src="images/njmlogo.gif"></span>
+      <ul class="top_left">
+        <li id="online">On-line</li>
+        <li id="consulting">consulting</li>
+      </ul>
+      <ul id="nav">
+        <li><a href="#">셀프체크<span class="subtitle">(free)</span></a></li>
+        <li><a href="#">컨설팅On</a>
+          <ul class="subnav">
+            <li><a href="#">사용방법</a></li>
+            <li><a href="#">회원전용</li>
+          </ul>
+        </li>
+        <li><a href="#">분석의뢰</a>
+          <ul class="subnav">
+            <li><a href="#">사용방법</a></li>
+            <li><a href="#">회원전용</li>
+          </ul>
+        </li>
+        <li><a href="#">정보칼럼<span class="subtitle">(free)</span></a></li>
+      </ul>
+      <ul id="nav2">
+        <li><span class="nav2-box"><a href="#">로그인</a></span></li>
+        <li><span class="nav2-box"><a href="#">내연구</a></span></li>
+        <li><span class="nav2-box"><a href="#">회원가입</a></span></li>
+      </ul>
+    </div>
+  </body>
+</html>
